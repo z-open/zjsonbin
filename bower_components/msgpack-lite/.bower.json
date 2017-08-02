@@ -1,0 +1,44 @@
+{
+  "name": "msgpack-lite",
+  "description": "Fast Pure JavaScript MessagePack Encoder and Decoder",
+  "authors": [
+    "@kawanet"
+  ],
+  "license": "MIT",
+  "moduleType": [
+    "globals"
+  ],
+  "keywords": [
+    "buffer",
+    "fluentd",
+    "messagepack",
+    "msgpack",
+    "serialize",
+    "stream",
+    "typedarray",
+    "arraybuffer",
+    "uint8array"
+  ],
+  "homepage": "https://github.com/kawanet/msgpack-lite",
+  "ignore": [
+    ".*",
+    "Makefile",
+    "bin",
+    "bower_components",
+    "global.js",
+    "index.js",
+    "lib",
+    "node_modules",
+    "test"
+  ],
+  "version": "0.1.26",
+  "_release": "0.1.26",
+  "_resolution": {
+    "type": "version",
+    "tag": "0.1.26",
+    "commit": "5605f50a5fb04e8444c5610a7ecbe165e3e30129"
+  },
+  "_source": "https://github.com/kawanet/msgpack-lite.git",
+  "_target": "^0.1.26",
+  "_originalSource": "msgpack-lite"
+}

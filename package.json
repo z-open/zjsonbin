@@ -1,0 +1,29 @@
+{
+  "name": "zjsonbin",
+  "version": "0.0.1",
+  "description": "Json serialization/deserialization",
+  "main": "lib/zjson-bin.js",
+  "keywords": [
+    "json"
+  ],
+  "author": {
+    "name": "Emmanuel Telmon",
+    "email": "etelmon@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/z-open/zjsonbin.git"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "lodash": "^4.0.0",
+    "msgpack-lite": "^0.1.26",
+    "promise": "^7.1.1",
+    "zlog": "git://github.com/z-open/zlog#1.0.0"
+  },
+  "devDependencies": {
+  }
+}
