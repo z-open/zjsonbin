@@ -25,5 +25,28 @@
     "zlog": "git://github.com/z-open/zlog#1.0.0"
   },
   "devDependencies": {
+    "eslint": "3.8.1",
+    "eslint-config-google": "0.6.0",
+    "gulp": "^3.9.0",
+    "gulp-batch": "^1.0.5",
+    "gulp-bump": "^1.0.0",
+    "gulp-clean": "^0.3.1",
+    "gulp-concat": "^2.6.0",
+    "gulp-consolidate": "^0.1.2",
+    "gulp-filesize": "0.0.6",
+    "gulp-jasmine": "2.4.2",
+    "gulp-jscs": "^3.0.2",
+    "gulp-jshint": "^2.0.1",
+    "gulp-rename": "^1.2.2",
+    "gulp-util": "^3.0.7",
+    "gulp-watch": "^4.3.5",
+    "jasmine-core": "^2.4.1",
+    "karma": "^0.13.19",
+    "karma-jasmine": "^0.3.6",
+    "karma-jshint": "^0.1.0",
+    "karma-phantomjs-launcher": "^0.2.3",
+    "karma-wrap-preprocessor": "^0.1.0",
+    "phantomjs": "^1.9.19",
+    "phantomjs-polyfill": "0.0.2"
   }
 }
