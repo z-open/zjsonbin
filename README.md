@@ -1,15 +1,16 @@
+# zJsonBin
 
 Json serialization/deserialization
 
 
-# Principle
+## Principle
   Register the json serialization/deserialization lib
   in node or browser
   
   When the serialization is executed the object will be stringify first, then reformatted to decrease density, finally compressed.
   The result is the zjson formatted data.
   
- # install
+ ## install
  ```shell
 $ npm install git://github.com/z-open/zjsonbin
 ```
@@ -19,23 +20,23 @@ $ bower install z-open/zjsonbin
 ```
 
 
- # Basic Usage
-  ## In node,
+ ## Basic Usage
+  ### In node,
   ```javascript
   const zjsonbin = require('zjsonbin');
   const obj = {title:'Big Object',content:'Huge'}
   const ser = zjsonbin.serialize(obj);
   console.log(zjsonbin.deserialize(ser));
   ```
-  ## In browser,
+  ### In browser,
   ```javascript
   const obj = {title:'Big Object',content:'Huge'}
   const ser = ZJSONBIN.serialize(obj);
   console.log(ZJSONBIN.deserialize(ser));
   ```
   
- # Options
- ## debug
+ ## Options
+ ### debug
    to see the performance during runtime,
    
   in the browser code
@@ -45,19 +46,19 @@ $ bower install z-open/zjsonbin
   zjsonbin = require('zjsonbin')
   zjsonbin.debug = true 
   
-  ## disabled
+  ### disabled
   
   ZJONBIN.disabled = true;
   zjsonbin.disabled = true;
   
 
- # Contribute
- ## recommendation
+ ## Contribute
+ ### Recommendation
  When enhancing this lib, recommendation
   is to npm link and bower link zjonbin
   so that anychange to the code will be reflected in the app.
   
- ## TODOS 
+ ### TODOS 
   - Performance must be improved.
   - Encoding only supports UTF8.
   - console Log is not efficient and make difficult to figure out whatn data has been serialized or deserialized
