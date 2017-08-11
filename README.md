@@ -59,12 +59,16 @@ $ bower install z-open/zjsonbin
   so that anychange to the code will be reflected in the app.
   
  ### TODOS 
-  - Performance must be improved.
+  - Performance could be improved.
+  - trigger compression on size threshold.
   - Encoding only supports UTF8.
   - console Log is not efficient and make difficult to figure out whatn data has been serialized or deserialized
   - the zjon format should carry some flag (is it compressed and needs decompression) to optimized deserialization work.
   - dictionary index is 32based... not optimum where there is more than 32 field names in the object.
   - bjson could be implemented instead msgpack-lite. other gzip-based libs were not efficient compression as it would not optimize the javascript obj.
+  - serialize or lib could receive options (ex  enable/disable compression,  compression:to provide function, enable/disable dictionary, output: buffer or other, default string..)
+  - deserialize or lib could aslo receive options (decompression: to provide decompression function)
+  
   
 
 
