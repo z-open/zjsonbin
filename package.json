@@ -22,7 +22,7 @@
     "lodash": "^4.0.0",
     "msgpack-lite": "^0.1.26",
     "promise": "^7.1.1",
-    "zlog": "git://github.com/z-open/zlog#1.0.0"
+    "zimit-zlog": "1.0.3"
   },
   "devDependencies": {
     "eslint": "3.8.1",
