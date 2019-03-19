@@ -15,7 +15,7 @@
     "url": "https://github.com/z-open/zjsonbin.git"
   },
   "scripts": {
-    "test": "mocha"
+    "test": "jasmine test/specs/zjson-bin.spec.js"
   },
   "license": "MIT",
   "dependencies": {
