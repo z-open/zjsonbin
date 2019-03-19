@@ -1,6 +1,6 @@
 {
   "name": "zjsonbin",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Json serialization/deserialization",
   "main": "lib/zjson-bin.js",
   "keywords": [
