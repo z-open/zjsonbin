@@ -1,6 +1,6 @@
 {
   "name": "zjsonbin",
-  "version": "0.0.2",
+  "version": "0.0.1",
   "description": "Json serialization/deserialization",
   "main": "lib/zjson-bin.js",
   "keywords": [
@@ -22,7 +22,7 @@
     "lodash": "^4.0.0",
     "msgpack-lite": "^0.1.26",
     "promise": "^7.1.1",
-    "zimit-zlog": "1.0.3"
+    "zlog": "git://github.com/z-open/zlog#1.0.0"
   },
   "devDependencies": {
     "eslint": "3.8.1",
