@@ -1,7 +1,7 @@
 {
   "name": "zjsonbin",
-  "version": "1.0.0",
-  "description": "Json serialization/deserialization",
+  "version": "1.0.1",
+  "description": "Json serialization/deserialization Tool Set",
   "main": "lib/zjson-bin.js",
   "keywords": [
     "json"
@@ -15,7 +15,7 @@
     "url": "https://github.com/z-open/zjsonbin.git"
   },
   "scripts": {
-    "test": "jasmine test/specs/zjson-bin.spec.js"
+    "test": "jasmine specs/**/*.js"
   },
   "license": "MIT",
   "dependencies": {

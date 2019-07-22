@@ -1,5 +1,5 @@
 'use strict';
-const zjsonbin = require('../../lib/zjson-bin.js');
+const zjsonbin = require('../lib/zjson-bin.js');
 
 describe('zjsonbin', () => {
   beforeEach(() => {

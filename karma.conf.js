@@ -18,7 +18,7 @@ module.exports = function (config) {
         files: [
             'bower_components/lodash/dist/lodash.js',
             'lib/zjson-lib.js',
-            'test/specs/**/*.*.js'
+            'specs/**/*.*.js'
         ],
 
         // preprocess matching files before serving them to the browser
