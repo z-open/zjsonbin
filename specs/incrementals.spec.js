@@ -20,7 +20,8 @@ describe('Incrementals', function () {
             status: null,
             description: null,
             settings: { param1: '1' },
-            revision: 1
+            revision: 1,
+            options: { show: true },
         };
 
         const change = syncHelper.differenceBetween(updatedObject, originalObject);
@@ -34,7 +35,9 @@ describe('Incrementals', function () {
                     param2: {
                         $removed: true
                     }
-                }
+                },
+                // added object
+                options: { show: true }
             }
         );
 
