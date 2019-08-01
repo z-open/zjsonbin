@@ -2,6 +2,58 @@
 const syncHelper = require('../lib/zjson-bin.js');
 const _ = require('lodash');
 
+describe('jsonify function', function () {
+    fit('should return a json object running deep toJSON functions', () => {
+        const obj = new SomeObject({
+            name: 'Minolo',
+            tracks: [
+                {
+                    id: 1,
+                    display: 'Requirement',
+                    resources: [
+                        new Resource({ id: 1, firstname: 'pedro', lastname: 'offshool' }),
+                        new Resource({ id: 2, firstname: 'pablo', lastname: 'guardor' }),
+                        new Resource({ id: 3, firstname: 'john', lastname: 'toli' })
+                    ]
+                },
+                {
+                    id: 2,
+                    display: 'Implementation',
+                    resources: [
+                        new Resource({ id: 1, firstname: 'thomas', lastname: 'offshool' })
+                    ]
+                }
+            ],
+            revision: 1
+        });
+
+        const jsonObj = syncHelper.jsonify(obj);
+        const jsonObjOutput = JSON.parse(JSON.stringify(obj));
+        expect(jsonObj).toEqual({
+            name: 'Minolo',
+            tracks: [
+                {
+                    id: 1,
+                    display: 'Requirement',
+                    resources: [
+                        { id: 1, firstname: 'pedro' },
+                        { id: 2, firstname: 'pablo' },
+                        { id: 3, firstname: 'john' }
+                    ]
+                },
+                {
+                    id: 2,
+                    display: 'Implementation',
+                    resources: [
+                        { id: 1, firstname: 'thomas' }
+                    ]
+                }
+            ],
+            revision: 1
+        });
+    });
+});
+
 describe('Incrementals', function () {
     it('get simple obj property differences', function () {
         const originalObject = {
@@ -188,3 +240,32 @@ describe('Incrementals', function () {
         expect(syncedObj).toEqual(updatedObject);
     });
 });
+
+class Resource {
+    constructor(obj) {
+        _.assign(this, _.clone(obj));
+    }
+    doSomething() {
+        return 'something';
+    }
+    toJSON() {
+        return {
+            id: this.id,
+            firstname: this.firstname
+        };
+    }
+}
+
+
+class SomeObject {
+    constructor(obj) {
+        _.assign(this, _.clone(obj));
+    }
+    doSomething() {
+        return 'something';
+    }
+    toJSON() {
+        const r = _.clone(this);
+        return r;
+    }
+}
