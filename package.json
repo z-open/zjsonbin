@@ -15,7 +15,8 @@
     "url": "https://github.com/z-open/zjsonbin.git"
   },
   "scripts": {
-    "test": "jasmine specs/**/*.js"
+    "test": "jasmine specs/**/*.js",
+    "lint": "node_modules/eslint/bin/eslint.js --fix lib specs"
   },
   "license": "MIT",
   "dependencies": {

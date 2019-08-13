@@ -53,6 +53,46 @@
             },
             "console": "internalConsole",
             "sourceMaps": false
+		},
+		{
+            "name": "Launch tests",
+            "type": "node",
+            "request": "launch",
+            "program": "${workspaceRoot}/node_modules/jasmine/bin/jasmine.js",
+            "stopOnEntry": false,
+            "args": [
+                "${workspaceRoot}/specs/incrementals.spec.js"
+            ],
+            "cwd": "${workspaceRoot}",
+            "preLaunchTask": null,
+            "runtimeExecutable": null,
+            "runtimeArgs": [
+                "--nolazy"
+            ],
+            "env": {
+                "NODE_ENV": "development"
+            },
+            "console": "internalConsole",
+            "sourceMaps": false,
+            "outDir": null
+        },
+		{
+            "name": "zjsonbin incremental tests",
+            "type": "node",
+            "request": "launch",
+            "program": "${workspaceRoot}/node_modules/jasmine/bin/jasmine.js",
+            "stopOnEntry": false,
+            "args": [
+                "${workspaceRoot}/test/specs/incrementals.spec.js"
+            ],
+            "cwd": "${workspaceRoot}",
+            "preLaunchTask": null,
+            "runtimeExecutable": null,
+            "env": {
+                "NODE_PATH": "./"
+            },
+            "console": "internalConsole",
+            "sourceMaps": false
         }
 	]
 }
