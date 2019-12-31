@@ -1,5 +1,5 @@
 'use strict';
-const zjsonbin = require('../../lib/zjson-bin.js');
+const zjsonbin = require('../lib/zjson-bin.js');
 
 describe('zjsonbin', () => {
   beforeEach(() => {
@@ -28,9 +28,9 @@ describe('zjsonbin', () => {
         undefined,
         {},
         42,
-        new Number(42),
-        new String('item 2'),
-        now,
+        Number(42),
+        String('item 2'),
+        now
       ],
       nested: {
         items: [
@@ -38,10 +38,10 @@ describe('zjsonbin', () => {
           null,
           undefined,
           42,
-          'item 2',
-        ],
+          'item 2'
+        ]
       },
-      property3: null,
+      property3: null
     };
 
     const ser = zjsonbin.serialize(obj);
@@ -53,22 +53,22 @@ describe('zjsonbin', () => {
         'item 1',
         '',
         null,
-        null,// undefineds transformed to nulls
+        null, // undefineds transformed to nulls
         {},
         42,
         42,
-        new String('item 2'),
-        nowString,// Dates are auto transformed to a simple date string
+        String('item 2'),
+        nowString // Dates are auto transformed to a simple date string
       ],
       nested: {
         items: [
           'item 1',
           null,
-          null,// undefineds transformed to nulls
+          null, // undefineds transformed to nulls
           42,
-          'item 2',
-        ],
-      },
+          'item 2'
+        ]
+      }
       // Eliminated, it has no value
       // property3: null,
     });
