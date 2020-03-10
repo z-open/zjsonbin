@@ -39,16 +39,16 @@ describe('jsonify function', function() {
           id: 1,
           display: 'Requirement',
           resources: [
-            new Resource({id: 1, firstname: 'pedro', lastname: 'offshool'}),
-            new Resource({id: 2, firstname: 'pablo', lastname: 'guardor'}),
-            new Resource({id: 3, firstname: 'john', lastname: 'toli'})
+            new Resource({ id: 1, firstname: 'pedro', lastname: 'offshool' }),
+            new Resource({ id: 2, firstname: 'pablo', lastname: 'guardor' }),
+            new Resource({ id: 3, firstname: 'john', lastname: 'toli' })
           ]
         },
         {
           id: 2,
           display: 'Implementation',
           resources: [
-            new Resource({id: 1, firstname: 'thomas', lastname: 'offshool'})
+            new Resource({ id: 1, firstname: 'thomas', lastname: 'offshool' })
           ]
         }
       ],
@@ -64,16 +64,16 @@ describe('jsonify function', function() {
           id: 1,
           display: 'Requirement',
           resources: [
-                        {id: 1, firstname: 'pedro'},
-                        {id: 2, firstname: 'pablo'},
-                        {id: 3, firstname: 'john'}
+            { id: 1, firstname: 'pedro' },
+            { id: 2, firstname: 'pablo' },
+            { id: 3, firstname: 'john' }
           ]
         },
         {
           id: 2,
           display: 'Implementation',
           resources: [
-                        {id: 1, firstname: 'thomas'}
+            { id: 1, firstname: 'thomas' }
           ]
         }
       ],
@@ -89,24 +89,17 @@ describe('Incrementals', function() {
       name: 'Minolo',
       owner: {},
       status: null,
-      settings: {param1: 'one', param2: 'two'},
+      settings: { param1: 'one', param2: 'two' },
       revision: 1
     };
 
-    const updatedObject = {
-      id: 'obj1',
-      name: 'Maxolo',
-      owner: {},
-      status: null,
-      description: null,
-      settings: {param1: '1'},
-      revision: 1,
-      options: {show: true}
-    };
+    const updatedObject = _.cloneDeep(originalObject);
+    updatedObject.name = 'Maxolo';
+    updatedObject.settings = { param1: '1' };
+    updatedObject.options = { show: true };
 
     const change = syncHelper.differenceBetween(updatedObject, originalObject);
 
-    console.info(JSON.stringify(change, null, 2));
     expect(change).toEqual(
       {
         name: 'Maxolo',
@@ -116,14 +109,96 @@ describe('Incrementals', function() {
             $removed: true
           }
         },
-                // added object
-        options: {show: true}
+        // added object
+        options: { show: true }
       }
-        );
+    );
 
-    const obj = _.clone(originalObject);
+    const obj = _.cloneDeep(originalObject);
     const syncedObj = syncHelper.mergeChanges(obj, change);
-        // but syncedObj would not have comment since it was null
+    // but syncedObj would not have comment since it was null
+    delete updatedObject.description;
+    expect(syncedObj).toEqual(updatedObject);
+  });
+
+  it('get simple obj property differences when property with null value is set with a new ID obj', function() {
+    const originalObject = {
+      id: 'obj1',
+      name: 'Maxolo',
+      owner: null,
+      status: null,
+      settings: { param1: '1' },
+      revision: 1
+    };
+
+    const updatedObject = _.cloneDeep(originalObject);
+    updatedObject.owner = { id: 3, display: 'Thomas' };
+
+    const change = syncHelper.differenceBetween(updatedObject, originalObject);
+
+    expect(change).toEqual(
+      {
+        owner: { id: 3, display: 'Thomas' }
+      }
+    );
+
+    const obj = _.cloneDeep(originalObject);
+    const syncedObj = syncHelper.mergeChanges(obj, change);
+    // but syncedObj would not have comment since it was null
+    delete updatedObject.description;
+    expect(syncedObj).toEqual(updatedObject);
+  });
+
+  it('get simple obj property differences when property with ID object is set to null', function() {
+    const originalObject = {
+      id: 'obj1',
+      name: 'Maxolo',
+      owner: { id: 3, display: 'Thomas' },
+      status: null,
+      settings: { param1: '1' },
+      revision: 1
+    };
+
+    const updatedObject = _.cloneDeep(originalObject);
+    updatedObject.owner = null;
+
+    const change = syncHelper.differenceBetween(updatedObject, originalObject);
+
+    expect(change).toEqual(
+      {
+        owner: null
+      }
+    );
+
+    const obj = _.cloneDeep(originalObject);
+    const syncedObj = syncHelper.mergeChanges(obj, change);
+    // but syncedObj would not have comment since it was null
+    delete updatedObject.description;
+    expect(syncedObj).toEqual(updatedObject);
+  });
+
+  it('get simple obj property differences when property with a simple object is set to null', function() {
+    const originalObject = {
+      id: 'obj1',
+      name: 'Maxolo',
+      owner: { id: 3, display: 'Thomas' },
+      status: null,
+      settings: { param1: '1' },
+      revision: 1
+    };
+    const updatedObject = _.cloneDeep(originalObject);
+    updatedObject.settings = null;
+
+    const change = syncHelper.differenceBetween(updatedObject, originalObject);
+    expect(change).toEqual(
+      {
+        settings: null
+      }
+    );
+
+    const obj = _.cloneDeep(originalObject);
+    const syncedObj = syncHelper.mergeChanges(obj, change);
+    // but syncedObj would not have comment since it was null
     delete updatedObject.description;
     expect(syncedObj).toEqual(updatedObject);
   });
@@ -145,28 +220,22 @@ describe('Incrementals', function() {
       revision: 1
     };
 
-    const updatedObject = {
-      name: 'Minolo',
-      // no change to an empty array
-      roles: [],
-      // update an array
-      tracks: [
-        {
-          id: 1,
-          display: 'Requirement Phase',
-          description: null
-        }
-      ],
-      // add new array
-      partners: [
-        {id: '12', name: 'john'}
-      ],
-      revision: 1
-    };
+    const updatedObject = _.cloneDeep(originalObject);
+    // update an array
+    updatedObject.tracks = [
+      {
+        id: 1,
+        display: 'Requirement Phase',
+        description: null
+      }
+    ];
+    // add new array
+    updatedObject.partners = [
+      { id: '12', name: 'john' }
+    ];
 
     const change = syncHelper.differenceBetween(updatedObject, originalObject);
 
-    console.info(JSON.stringify(change, null, 2));
     expect(change).toEqual(
       {
         tracks: [
@@ -180,14 +249,14 @@ describe('Incrementals', function() {
           }
         ],
         partners: [
-            {id: '12', name: 'john'}
+          { id: '12', name: 'john' }
         ]
       }
-        );
+    );
 
-    const obj = _.clone(originalObject);
+    const obj = _.cloneDeep(originalObject);
     const syncedObj = syncHelper.mergeChanges(obj, change);
-        // but syncedObj would not have description since it was null
+    // but syncedObj would not have description since it was null
     delete updatedObject.tracks[0].description;
     expect(syncedObj).toEqual(updatedObject);
   });
@@ -222,9 +291,9 @@ describe('Incrementals', function() {
             $removed: true
           }
         ],
-        // the change is passing an array instead
+      // the change is passing an array instead
         partners: [
-            {id: '12', name: 'john'}
+        { id: '12', name: 'john' }
         ]
       };
 
@@ -244,49 +313,38 @@ describe('Incrementals', function() {
           id: 1,
           display: 'Requirement',
           resources: [
-                        {id: 1, name: 'pedro'},
-                        {id: 2, name: 'pablo'},
-                        {id: 3, name: 'john'}
-          ]
+            { id: 1, name: 'pedro' },
+            { id: 2, name: 'pablo' },
+            { id: 3, name: 'john' }
+          ],
+          assets: ['software', 'computers']
         },
         {
           id: 2,
           display: 'Implementation',
           resources: [
-                        {id: 1, name: 'thomas'}
+            { id: 1, name: 'thomas' }
           ]
         }
       ],
       revision: 1
     };
 
-    const updatedObject = {
-      name: 'Minolo',
-      tracks: [
-        {
-          id: 1,
-          display: 'Requirement',
-          resources: [
-                        // peter is updated
-                        {id: 1, name: 'peter'},
-                        // pablo is removed
-                        {id: 3, name: 'john'},
-                        {id: 4, name: 'philip', comment: null}
-          ]
-        },
-        {
-          id: 2,
-          display: 'Implementation',
-                    // all resources removed
-          resources: []
-        }
-      ],
-      revision: 1
-    };
+    const updatedObject = _.cloneDeep(originalObject);
+    updatedObject.tracks[0].resources = [
+      // peter is updated
+      { id: 1, name: 'peter' },
+      // pablo is removed
+      { id: 3, name: 'john' },
+      { id: 4, name: 'philip', comment: null }
+    ];
+    // all resources removed
+    updatedObject.tracks[1].resources = [];
+    updatedObject.tracks[0].assets = [];
 
     const change = syncHelper.differenceBetween(updatedObject, originalObject);
 
-    console.info(JSON.stringify(change, null, 2));
+    // console.info(JSON.stringify(change, null, 2));
     expect(change).toEqual(
       {
         tracks: [
@@ -305,7 +363,8 @@ describe('Incrementals', function() {
                 id: 2,
                 $removed: true
               }
-            ]
+            ],
+            assets: [],
           },
           {
             id: 2,
@@ -313,10 +372,10 @@ describe('Incrementals', function() {
           }
         ]
       }
-        );
-    const obj = _.clone(originalObject);
+    );
+    const obj = _.cloneDeep(originalObject);
     const syncedObj = syncHelper.mergeChanges(obj, change);
-        // but syncedObj would not have comment since it was null
+    // but syncedObj would not have comment since it was null
     delete updatedObject.tracks[0].resources[2].comment;
     expect(syncedObj).toEqual(updatedObject);
   });
