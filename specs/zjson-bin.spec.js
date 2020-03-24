@@ -69,7 +69,8 @@ describe('zjsonbin', () => {
           'item 2'
         ]
       },
-      property3: null,
+      // Eliminated, it has no value
+      // property3: null,
     });
   });
 
