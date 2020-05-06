@@ -26,7 +26,7 @@
     "zimit-zlog": "1.0.6"
   },
   "devDependencies": {
-    "eslint": "3.8.1",
+    "eslint": "4.18.2",
     "eslint-config-google": "0.6.0",
     "gulp": "4.0.2",
     "gulp-batch": "1.0.5",
