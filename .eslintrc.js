@@ -23,6 +23,9 @@ module.exports = {
     },
     globals: {
         //testing keywords
+        'window': true,
+        'TextDecoder': true,
+        'TextEncoder': true,
         'describe': true,
         'fail': true,
         'it': true,
