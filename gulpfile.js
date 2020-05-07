@@ -8,9 +8,6 @@ let gulp = require('gulp');
 // deletes files used during build (https://www.npmjs.com/package/gulp-clean)
 let clean = require('gulp-clean');
 
-// watches files for changes and reruns tasks (https://www.npmjs.com/package/gulp-watch)
-let watch = require('gulp-watch');
-
 // karma server to run automated unit tests (http://karma-runner.github.io/0.13/index.html)
 // let Server = require('karma').Server;
 
@@ -69,13 +66,6 @@ gulp.task('test', function(done) {
 //     done();
 //   }).start();
 // });
-
-// watch the app .js files for changes and execute the app-js task if necessary
-gulp.task('app-watch', function() {
-  watch(appFiles, function(file) {
-        // gulp.start('app-js-dev');
-  });
-});
 
 // clean up files after builds
 gulp.task('cleanup', function() {
