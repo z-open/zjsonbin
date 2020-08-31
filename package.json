@@ -21,7 +21,6 @@
   "license": "MIT",
   "dependencies": {
     "lodash": "4.17.15",
-    "lz4": "0.6.3",
     "promise": "7.1.1",
     "zimit-zlog": "1.0.6"
   },
