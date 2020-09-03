@@ -64,16 +64,16 @@ describe('jsonify function', function() {
           id: 1,
           display: 'Requirement',
           resources: [
-                        {id: 1, firstname: 'pedro'},
-                        {id: 2, firstname: 'pablo'},
-                        {id: 3, firstname: 'john'}
+            {id: 1, firstname: 'pedro'},
+            {id: 2, firstname: 'pablo'},
+            {id: 3, firstname: 'john'}
           ]
         },
         {
           id: 2,
           display: 'Implementation',
           resources: [
-                        {id: 1, firstname: 'thomas'}
+            {id: 1, firstname: 'thomas'}
           ]
         }
       ],
@@ -116,14 +116,14 @@ describe('Incrementals', function() {
             $removed: true
           }
         },
-                // added object
+        // added object
         options: {show: true}
       }
-        );
+    );
 
     const obj = _.clone(originalObject);
     const syncedObj = syncHelper.mergeChanges(obj, change);
-        // but syncedObj would not have comment since it was null
+    // but syncedObj would not have comment since it was null
     delete updatedObject.description;
     expect(syncedObj).toEqual(updatedObject);
   });
@@ -180,14 +180,14 @@ describe('Incrementals', function() {
           }
         ],
         partners: [
-            {id: '12', name: 'john'}
+          {id: '12', name: 'john'}
         ]
       }
-        );
+    );
 
     const obj = _.clone(originalObject);
     const syncedObj = syncHelper.mergeChanges(obj, change);
-        // but syncedObj would not have description since it was null
+    // but syncedObj would not have description since it was null
     delete updatedObject.tracks[0].description;
     expect(syncedObj).toEqual(updatedObject);
   });
@@ -224,7 +224,7 @@ describe('Incrementals', function() {
         ],
         // the change is passing an array instead
         partners: [
-            {id: '12', name: 'john'}
+          {id: '12', name: 'john'}
         ]
       };
 
@@ -244,16 +244,16 @@ describe('Incrementals', function() {
           id: 1,
           display: 'Requirement',
           resources: [
-                        {id: 1, name: 'pedro'},
-                        {id: 2, name: 'pablo'},
-                        {id: 3, name: 'john'}
+            {id: 1, name: 'pedro'},
+            {id: 2, name: 'pablo'},
+            {id: 3, name: 'john'}
           ]
         },
         {
           id: 2,
           display: 'Implementation',
           resources: [
-                        {id: 1, name: 'thomas'}
+            {id: 1, name: 'thomas'}
           ]
         }
       ],
@@ -267,17 +267,17 @@ describe('Incrementals', function() {
           id: 1,
           display: 'Requirement',
           resources: [
-                        // peter is updated
-                        {id: 1, name: 'peter'},
-                        // pablo is removed
-                        {id: 3, name: 'john'},
-                        {id: 4, name: 'philip', comment: null}
+            // peter is updated
+            {id: 1, name: 'peter'},
+            // pablo is removed
+            {id: 3, name: 'john'},
+            {id: 4, name: 'philip', comment: null}
           ]
         },
         {
           id: 2,
           display: 'Implementation',
-                    // all resources removed
+          // all resources removed
           resources: []
         }
       ],
@@ -313,10 +313,10 @@ describe('Incrementals', function() {
           }
         ]
       }
-        );
+    );
     const obj = _.clone(originalObject);
     const syncedObj = syncHelper.mergeChanges(obj, change);
-        // but syncedObj would not have comment since it was null
+    // but syncedObj would not have comment since it was null
     delete updatedObject.tracks[0].resources[2].comment;
     expect(syncedObj).toEqual(updatedObject);
   });
