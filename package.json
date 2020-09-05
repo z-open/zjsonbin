@@ -21,7 +21,7 @@
   "license": "MIT",
   "dependencies": {
     "lodash": "4.17.19",
-    "lz4-asm": "git+https://github.com/z-open/lz4.js.git#d5e8ce4746df49148f4c7a839d3b95ea1e291845",
+    "lz4-asm": "git+https://github.com/z-open/lz4.js.git#1dfc71161349796f9fb911e1b2604681c948e50f",
     "promise": "7.1.1",
     "zimit-zlog": "1.0.6"
   },
