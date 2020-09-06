@@ -1,6 +1,6 @@
 {
   "name": "zjsonbin",
-  "version": "2.0.3",
+  "version": "2.0.4",
   "description": "Json serialization/deserialization Tool Set",
   "main": "lib/zjson-bin.js",
   "keywords": [
@@ -20,13 +20,13 @@
   },
   "license": "MIT",
   "dependencies": {
-    "lodash": "4.17.15",
-    "lz4": "0.6.3",
+    "lodash": "4.17.19",
+    "lz4-asm": "git+https://github.com/z-open/lz4.js.git#1dfc71161349796f9fb911e1b2604681c948e50f",
     "promise": "7.1.1",
     "zimit-zlog": "1.0.6"
   },
   "devDependencies": {
-    "eslint": "3.8.1",
+    "eslint": "4.18.2",
     "eslint-config-google": "0.6.0",
     "gulp": "4.0.2",
     "gulp-batch": "1.0.5",

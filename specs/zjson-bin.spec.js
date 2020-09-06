@@ -74,12 +74,27 @@ describe('zjsonbin', () => {
     });
   });
 
-  it('should return the same object after deserialization and not crash', () => {
+  it('should compress data and return the same object after deserialization and not crash', () => {
     const obj = {};
     for (let v = 0; v < 65000; v++) {
       obj['p' + v] = v;
     }
+    zjsonbin.compressionThreshold = 0;
     const ser = zjsonbin.serialize(obj);
+    expect(ser.length).toEqual(532476);
+    const r = zjsonbin.deserialize(ser);
+    expect(obj).toEqual(r);
+  });
+
+  it('should not compress data ', () => {
+    const obj = {};
+    for (let v = 0; v < 65000; v++) {
+      obj['p' + v] = v;
+    }
+    zjsonbin.compressionThreshold = 1000000;
+    const ser = zjsonbin.serialize(obj);
+    // size not compressed:
+    expect(ser.length).toEqual(952781);
     const r = zjsonbin.deserialize(ser);
     expect(obj).toEqual(r);
   });
